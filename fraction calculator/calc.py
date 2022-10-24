@@ -10,11 +10,16 @@ def help():
         """
     )
 
+
+def two_element_list_to_f_string_and_print(list:list):
+    print(f"{list[0]} / {list[1]}")
+
+
 def simplify(N, D):
     hcf = compute_hcf(N, D)
     on =  N / hcf
     od =  D / hcf
-    RESULT_LIST = [on, od]
+    RESULT = [on, od]
     return RESULT_LIST
 
 
@@ -45,11 +50,43 @@ def compute_hcf(x, y):
             hcf = i
     return hcf
 
+
+
+
+
+
+
+
 def multiply(N1, D1, N2, D2):
     RN = N1 * N2
     RD = D1 * D2
-    RESULT_FRACTION_LIST = [RN, RD]
-    return RESULT_FRACTION_LIST
+    if RN > RD:
+        choice = input("What form do you want your answer in? \n mixed fraction or improper fraction? \n type your answer to this question as specified in the question itself")
+        if choice.lower() == "mixed fraction":
+            Remainder = RN % RD
+            Quotient = RN / RD
+            Whole = Quotient - Remainder
+
+
+            RESULT = f"{Whole} {Remainder} {RD}"
+            print(RESULT)
+
+        elif choice.lower() == "improper fraction":
+            RESULT_FRACTION_LIST = [RN, RD]
+            two_element_list_to_f_string_and_print(RESULT_FRACTION_LIST)
+
+    elif RN < RD:
+        print(simplify(RN, RD))
+
+    else:
+        print("1")
+
+
+
+
+
+
+
 
 
 def divide(N1, D1, N2, D2):
@@ -125,7 +162,8 @@ while True:
         RESULT_LIST = add(N1, D1, N2, D2)
 
     elif OP == "x":
-        RESULT_LIST = multiply(N1, D1, N2, D2)
+        multiply(N1, D1, N2, D2)
+
 
     elif OP == "/":
         RESULT_LIST = divide(N1, D1, N2, D2)
@@ -137,7 +175,4 @@ while True:
         break
 
 
-    ON = RESULT_LIST[0]
-    OD = RESULT_LIST[1]
-    RESULT = f"{ON}/{OD}"
-    print(RESULT)
+
