@@ -2,7 +2,8 @@
 
 def help():
     print(
-        """+ ==> add
+        """
+        + ==> add
         - ==> subtract
         x ==> multiply
         / ==> divide
@@ -65,9 +66,11 @@ def multiply(N1, D1, N2, D2):
             Remainder = RN % RD
             Quotient = RN / RD
             Whole = int(Quotient)
-
-            RESULT = f"{Whole} {Remainder}/{RD}"
-            print(RESULT)
+            if Remainder != 0:
+                RESULT = f"{Whole} {Remainder}/{RD}"
+                print(RESULT)
+            else:
+                print(Whole)
 
         elif choice.lower() == "improper fraction":
             RESULT_FRACTION_LIST = [RN, RD]
@@ -180,7 +183,9 @@ def subtract(N1, D1, N2, D2):
 
 # mainloop
 while True:
+    help()
     # get inputs
+
 
     N1 = int(input("numerator 1 -> "))
     D1 = int(input("denominator 1 -> "))
@@ -199,6 +204,7 @@ while True:
 
     if OP != "+" and OP != "-" and OP != "x" and OP != "/":
         print("invalid operator")
+        break
 
     N2 = int(input("numerator 2 -> "))
     D2 = int(input("denominator 2 ->"))
