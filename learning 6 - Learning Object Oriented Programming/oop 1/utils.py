@@ -105,19 +105,44 @@ class Math:
                 return 2 * 3.141592659 * self.radius
 
         class Triangle:
-            def __init__(self, height:float, breadth:float, S1:float, S2:float, S3:float):
+            def __init__(self, height: float, breadth: float, S1: float, S2: float, S3: float):
                 self.height = height
                 self.breadth = breadth
                 self.S1 = S1
                 self.S2 = S2
                 self.S3 = S3
 
-
             def area(self):
-                return 1/2 * self.height * self.breadth
+                return 1 / 2 * self.height * self.breadth
 
             def perimeter(self):
                 return self.S1 + self.S2 + self.S3
 
 
-
+def select():
+    selection = input(("""
+    1. Ascending order
+    2. Descending order
+    3. Square Area
+    4. Square Perimeter
+    5. Rectangle area
+    6. Rectangle Perimeter
+    7. Triangle area
+    8. Triangle Perimeter
+    9. Circle Area
+    10. Circle Perimeter (Circumference)
+    11. stop 
+    """))
+    
+    valid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    
+    if selection not in valid:
+        selection()
+        
+    elif selection in valid:
+        return selection
+    
+    else:
+        print("somthing went wrong...")
+    
+    
