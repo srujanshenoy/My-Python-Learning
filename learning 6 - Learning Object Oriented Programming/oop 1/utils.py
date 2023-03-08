@@ -133,16 +133,35 @@ def select():
     10. Circle Perimeter (Circumference)
     11. stop 
     """))
-    
+
+    try:
+        selection = int(selection)
+    except:
+        print("not a number,")
+
     valid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    
+
     if selection not in valid:
-        selection()
-        
+        print("invalid selection.")
+        select()
+
     elif selection in valid:
         return selection
-    
+
     else:
         print("somthing went wrong...")
-    
-    
+
+
+def check_float(value):
+    while True:
+        entered = input(f"{value}: ")
+        try:
+            value = float(entered)
+            break
+        except:
+            print("Not a number")
+
+    return value
+
+
+
